@@ -1,6 +1,7 @@
 package javaEmployee;
 
-public class UC_3 {
+public class UC_4 {
+
 	public static final int  EMP_FTE = 1;
 	public static final int  EMP_WAGE=20;	
 	public static final int  EMP_HOUR=8;
@@ -13,21 +14,25 @@ public class UC_3 {
 			System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
 			
 			//Data Type to check Attendance
-			double check = Math.floor(Math.random()*10)%3;
+			int check = (int) Math.floor(Math.random()*10)%3;
 			System.out.println("Employ Check: "+ check);
 			
 			//Main Logic of Program
-			if(check == EMP_FTE) { 
+			switch (check) {
+			
+			case EMP_FTE :  
 			System.out.println("Employee is Present");	
 			System.out.println("Employ Wage= "+EMP_WAGE*EMP_HOUR);
-			}
-			else if(check == EMP_PTE) { 
-				System.out.println("Employee is Present and Part Time");	
-				System.out.println("Employ Wage= "+EMP_WAGE*EMP_PTE_HOUR);
-				}
-			else
+			break;
+			
+			case EMP_PTE :  
+			System.out.println("Employee is Present and Part Time");	
+			System.out.println("Employ Wage= "+EMP_WAGE*EMP_PTE_HOUR);
+			break;
+				
+			default :
 			System.out.println("Employee is Absent");	
-		
+			}
 		}
 
 }
