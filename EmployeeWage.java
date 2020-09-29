@@ -1,43 +1,58 @@
 package javaEmployee;
 
-public class UC_6 {
-	public static final int  EMP_FTE = 1;
-	public static final int  EMP_WAGE=20;	
-	public static final int  EMP_HOUR=8;
-	public static final int  EMP_PTE = 2;
-	public static final int  EMP_PTE_HOUR = 4;
-	public static final int  EMP_WORKING_DAYS = 20;
-	public static final int  EMP_HOUR_LIMIT = 100;
+public class EmployeeWage {
 	
-		public static void main(String[] args) {
+	int emp_wage = 0;
+	
+	private int emp_check;
+	private int wage_hour;
+	private int hours_FTE;
+	private int hour_limit;
+	private int month_days;
+	
+	int emp_hour = 0;
+	int day_count =0;
+	int total_wage = 0;
+
+	private int hours_PTE;
+	
+	public EmployeeWage(int emp_check, int wage_hour ,int hours_FTE ,int hours_PTE, int hour_limit, int month_days) {
 		
-			//Print Starting Message
-			System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
+		this.emp_check  = emp_check;
+		this.wage_hour = wage_hour;
+		this.hours_FTE = hours_FTE;
+		this.hours_PTE = hours_PTE;
+		this.hour_limit = hour_limit;
+		this.month_days = month_days;
+	}
+	
+	
+	public void EmpWage() {
+		
+		System.out.println("Days \t Total Hours \t Total Wage");
+		while(emp_hour<hour_limit && day_count<=month_days) {
 			
-			//Data Type to check Attendance
-			double check = Math.floor(Math.random()*10)%3;
-			System.out.println("Employ Check: "+ check);
-			
-			//Main Logic FTE
-			if(check == EMP_FTE) { 
-			System.out.println("Employee is Present and Full Time");	
-			if(EMP_HOUR*EMP_WORKING_DAYS >= EMP_HOUR_LIMIT)
-			System.out.println("Employ Wage= "+EMP_WAGE*EMP_HOUR_LIMIT);
-			else
-				System.out.println("Employ Wage= "+EMP_WAGE*EMP_HOUR*EMP_WORKING_DAYS);	
+			switch(emp_check) {
+			case 1: 
+			total_wage = total_wage + wage_hour*hours_PTE;
+			emp_hour = emp_hour + hours_PTE;
+			System.out.println(day_count+" \t "+emp_hour+" \t "+total_wage+" (Part Time Employee)");
+			break;
+			case 2: 
+			total_wage = total_wage + wage_hour*hours_FTE;
+			emp_hour = emp_hour + hours_FTE;
+			System.out.println(day_count+" \t "+emp_hour+" \t \t"+total_wage+" (Full Time Employee)");
+			break;
+			case 0:
+			System.out.println("Employee is absent on Day "+day_count);
+			break;
 			}
-			
-			//Main Logic PTE 
-			else if(check == EMP_PTE) { 
-				System.out.println("Employee is Present and Part Time");	
-				if(EMP_PTE_HOUR*EMP_WORKING_DAYS >= EMP_HOUR_LIMIT)
-				System.out.println("Employ Wage= "+EMP_WAGE*EMP_HOUR_LIMIT);
-				else
-				System.out.println("Employ Wage= "+EMP_WAGE*EMP_PTE_HOUR*EMP_WORKING_DAYS);	
-				}
-			//Employee Absent
-			
-			else
-			System.out.println("Employee is Absent");	
+			++day_count;
 		}
+		System.out.println("Finally Wage calculated for one month is : "+total_wage);
+	}
+
+
+	
+	
 }
