@@ -6,6 +6,24 @@ public class CompanyEmpWage {
 	private int emp_wage_per_hr;
 	private int working_day_per_month;
 	private String company_name;
+	private int total_emp_wage;
+	private int daily_wage;
+
+	public int getTotal_emp_wage() {
+		return total_emp_wage;
+	}
+
+	public void setTotal_emp_wage(int total_emp_wage) {
+		this.total_emp_wage = total_emp_wage;
+	}
+
+	public int getDaily_wage() {
+		return daily_wage;
+	}
+
+	public void setDaily_wage(int daily_wage) {
+		this.daily_wage = daily_wage;
+	}
 
 	public int getWorking_hrs_per_month() {
 		return working_hrs_per_month;
