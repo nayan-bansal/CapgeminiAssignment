@@ -3,6 +3,7 @@ package javaEmployee;
 import java.util.*;
 
 public class EmployeeWage {
+	
 	//constant
 	public static final int IS_FULL_TIME =1;
 	public static final int IS_PART_TIME=2;
@@ -65,4 +66,15 @@ public class EmployeeWage {
 	}
 		return total_hrs*company.getEmp_wage_per_hr();
 	}
+	
+		public void PrintQueryDetails(String company_name){
+		for(int i = 0; i < company_emp_wage.size(); i++){
+			CompanyEmpWage p = (CompanyEmpWage)company_emp_wage.get(i);
+         	if(company_name.equals(p.getCompany_name())){
+        		System.out.println("Total Wage of "+p.getCompany_name()+" is "+p.getTotal_emp_wage());
+         	}
+	
 	}
+		}
+}
+	
