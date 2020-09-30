@@ -1,6 +1,12 @@
 package javaEmployee;
 
-public class EmployeeWage {
+interface Employee{
+
+	public	void EmpWage();
+	
+}
+
+public class EmployeeWage implements Employee {
 	
 	int emp_wage = 0;
 	
@@ -9,12 +15,12 @@ public class EmployeeWage {
 	private int hours_FTE;
 	private int hour_limit;
 	private int month_days;
+	private int hours_PTE;
 	
 	int emp_hour = 0;
 	int day_count =0;
 	int total_wage = 0;
 
-	private int hours_PTE;
 	
 	public EmployeeWage(int emp_check, int wage_hour ,int hours_FTE ,int hours_PTE, int hour_limit, int month_days) {
 		
@@ -26,7 +32,7 @@ public class EmployeeWage {
 		this.month_days = month_days;
 	}
 	
-	
+	@Override
 	public void EmpWage() {
 		
 		System.out.println("Days \t Total Hours \t Total Wage");
@@ -51,8 +57,4 @@ public class EmployeeWage {
 		}
 		System.out.println("Finally Wage calculated for one month is : "+total_wage);
 	}
-
-
-	
-	
 }
