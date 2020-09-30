@@ -12,6 +12,7 @@ public class EmployeeWageComputation {
 
 		System.out.println("Enter 1 to add company emp wage calculation details");
 		System.out.println("Enter 2 to display details in arraylist");
+		System.out.println("Enter 3 to display total wage by company name");
 		System.out.println("Enter 0 to exit");
 		while(true) {
 			System.out.println("Enter option");
@@ -45,6 +46,11 @@ public class EmployeeWageComputation {
 						System.out.println("Daily Wage "+c1.getDaily_wage());
 						System.out.println("total wage "+c1.getTotal_emp_wage());
 						}
+			}
+			else if (option==3) {
+					System.out.println("Enter the company name to get total wages");
+					String company_name=obj.next();
+					emp.PrintQueryDetails(company_name);
 			}
 			else {
 					break;
