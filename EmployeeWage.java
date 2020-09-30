@@ -31,13 +31,19 @@ public class EmployeeWage {
 		return company_emp_wage;
 	}	
 	
+	public void computeEmpWage() {
+		for(CompanyEmpWage company:company_emp_wage) {
+			System.out.println("Employee daily wage of "+company.getCompany_name()+" is "+company.getDaily_wage());
+			System.out.println("Employee monthly wage of "+company.getCompany_name()+" is "+company.getTotal_emp_wage());
+		}
+	}
 	//Method to compute Company Wage
-	public int computeEmpWage(int emp_wage_per_hr, int working_day_per_month, int working_hrs_per_month, String company_name) {
+	public int computeEmpWage(CompanyEmpWage company) {
 		int emp_hrs_per_day;
 		int total_hrs=0;
 		int total_working_days=0;
 		System.out.println("Day\t Hours Worked\tTotal Wage");
-		while(total_hrs<=working_hrs_per_month && total_working_days<working_day_per_month) {
+		while(total_hrs<=company.getWorking_hrs_per_month() && total_working_days<company.getWorking_day_per_month()) {
 		total_working_days++;
 		int emp_check= (int) Math.floor(Math.random()*10)%3;
 		switch(emp_check) {
@@ -51,11 +57,12 @@ public class EmployeeWage {
 			emp_hrs_per_day=0;
 			
 		}
-		int emp_wage=emp_hrs_per_day*emp_wage_per_hr;
+		int emp_wage=emp_hrs_per_day*company.getEmp_wage_per_hr();
+		company.setDaily_wage(emp_wage);
 		total_hrs+=emp_hrs_per_day;
 		total_working_days++;
 		System.out.println(" "+total_working_days+" \t"+total_hrs+" \t\t"+emp_wage);
 	}
-		return total_hrs*emp_wage_per_hr;
+		return total_hrs*company.getEmp_wage_per_hr();
 	}
 	}
