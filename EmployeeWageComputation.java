@@ -1,32 +1,29 @@
-package javaEmployee;
+package jaemployeev;
 
-public class EmployeeWageComputation{
-	
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Scanner;
+public class EmployeeWageComputation {
 	public static void main(String[] args) {
-	
 		
-		int emp_check = (int) (Math.floor(Math.random()*10)%3);
-		int company_check = (int) (Math.floor(Math.random()*10)%3);
-	
-		switch(company_check) {
-		
-		case 1: //Reliance
-			System.out.println("Reliance Employee");
-			EmployeeWage wageReliance = new EmployeeWage(emp_check, 45, 9, 6, 150, 18);
-			 wageReliance.EmpWage();	
-			break;
-		
-		case 2: // Capgemini
-			System.out.println("Capgemini Employee");
-			EmployeeWage wageCapgemini = new EmployeeWage(emp_check, 55, 10, 4, 160, 20);
-		     wageCapgemini.EmpWage();
-			break;
-		
-		case 0: // Amazon 
-			System.out.println("Amazon Employee");
-			EmployeeWage wageAmazon = new EmployeeWage(emp_check, 50, 12, 5, 180, 22);
-		     wageAmazon.EmpWage();
-			break;
-		}
+		//object of builder class
+		EmpWageBuilder emp=new EmpWageBuilder();
+		//scanner class to take user inputs
+		Scanner obj = new Scanner(System.in);
+		//object of company emp wage class
+		CompanyEmpWage c=new CompanyEmpWage();
+		//setting the values of company emp wage class
+		System.out.println("Enter Company name");
+		c.setCompany_name(obj.next());
+		System.out.println("Enter Total Working Hours");
+		c.setWorking_hrs_per_month(obj.nextInt());
+		System.out.println("Enter Total Working Days");
+		c.setWorking_day_per_month(obj.nextInt());
+		System.out.println("Enter Wage per hour");
+		c.setEmp_wage_per_hr(obj.nextInt());
+		emp.addCompany(c);
+		int emp_wage=emp.computeEmpWage(c.getEmp_wage_per_hr(),c.getWorking_day_per_month(),c.getWorking_hrs_per_month(),c.getCompany_name());
+		System.out.println("Company Wage :"+emp_wage);
+
 	}
 }
