@@ -1,6 +1,7 @@
 package javaemployee;
 
 public class CompanyEmpWage {
+	
 	private int working_hrs_per_month;
 	private int emp_wage_per_hr;
 	private int working_day_per_month;
