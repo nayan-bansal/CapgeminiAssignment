@@ -1,58 +1,57 @@
 package javaEmployee;
 
 public class EmployeeWage {
+//Constant
+	public static final int IS_FULL_TIME =1;
+	public static final int IS_PART_TIME=2;
+	public static final int WAGE_PER_HOUR=20;
+	public static final int TOTAL_WORKING_HRS=100;
+	public static final int TOTAL_WORKING_DAYS=20;
 	
-	int emp_wage = 0;
-	
-	private int emp_check;
-	private int wage_hour;
-	private int hours_FTE;
-	private int hour_limit;
-	private int month_days;
-	
-	int emp_hour = 0;
-	int day_count =0;
-	int total_wage = 0;
-
-	private int hours_PTE;
-	
-	public EmployeeWage(int emp_check, int wage_hour ,int hours_FTE ,int hours_PTE, int hour_limit, int month_days) {
+	//method to compute the employee wages
+	public static int empWageCalculation(int emp_check) {
+		int emp_hours=0;
+		int emp_wage=0;
 		
-		this.emp_check  = emp_check;
-		this.wage_hour = wage_hour;
-		this.hours_FTE = hours_FTE;
-		this.hours_PTE = hours_PTE;
-		this.hour_limit = hour_limit;
-		this.month_days = month_days;
-	}
-	
-	
-	public void EmpWage() {
-		
-		System.out.println("Days \t Total Hours \t Total Wage");
-		while(emp_hour<hour_limit && day_count<=month_days) {
-			
-			switch(emp_check) {
-			case 1: 
-			total_wage = total_wage + wage_hour*hours_PTE;
-			emp_hour = emp_hour + hours_PTE;
-			System.out.println(day_count+" \t "+emp_hour+" \t "+total_wage+" (Part Time Employee)");
-			break;
-			case 2: 
-			total_wage = total_wage + wage_hour*hours_FTE;
-			emp_hour = emp_hour + hours_FTE;
-			System.out.println(day_count+" \t "+emp_hour+" \t \t"+total_wage+" (Full Time Employee)");
-			break;
-			case 0:
-			System.out.println("Employee is absent on Day "+day_count);
-			break;
+		switch(emp_check) {
+		case IS_FULL_TIME :
+			System.out.println("Employee is full time");
+			emp_hours=8;
+			if(emp_hours*TOTAL_WORKING_DAYS>=TOTAL_WORKING_HRS) {
+				emp_wage=TOTAL_WORKING_HRS*WAGE_PER_HOUR;
 			}
-			++day_count;
+			else {
+				emp_wage=TOTAL_WORKING_DAYS*emp_hours*WAGE_PER_HOUR;
+			}
+			break;
+		case IS_PART_TIME : 
+			System.out.println("Employee is part time");
+			emp_hours=4;
+			if(emp_hours*TOTAL_WORKING_DAYS>=TOTAL_WORKING_HRS) {
+				emp_wage=TOTAL_WORKING_HRS*WAGE_PER_HOUR;
+			}
+			else {
+				emp_wage=TOTAL_WORKING_DAYS*emp_hours*WAGE_PER_HOUR;
+			}
+			break;
+		default :
+			System.out.println("Employee absent");
+			emp_wage=0;
 		}
-		System.out.println("Finally Wage calculated for one month is : "+total_wage);
+		
+		return emp_wage;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Welcome to Employee Wage Computation Program");
+		
+		//Generating random number to determine type of object
+		int type_of_emp = (int) Math.floor(Math.random()*10)%3;
+		
+		//Calling the static method which computes employee wage
+		int emp_wage=empwage.empWageCalculation(type_of_emp);
+		System.out.println("Employee Wage for a month: "+ emp_wage);
+		
 	}
 
-
-	
-	
 }
