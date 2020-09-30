@@ -29,7 +29,7 @@ public class EmployeeWage {
 	
 	public void EmpWage() {
 		
-		System.out.println("Days \t Total Hours \t Total Wage \t Capgemini");
+		System.out.println("Days \t Total Hours \t Total Wage");
 		while(emp_hour<hour_limit && day_count<=month_days) {
 			
 			switch(emp_check) {
